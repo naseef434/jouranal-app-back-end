@@ -13,8 +13,8 @@ class JournalEntry(models.Model):
     date = models.DateField(auto_now=False, auto_now_add=False,)
     check_field = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.file_name
+    # def __str__(self):
+    #     return self.entryNumber
  
 class Debit(models.Model):
     journalEntry_id = models.ForeignKey(JournalEntry, on_delete=models.CASCADE)

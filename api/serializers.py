@@ -26,3 +26,15 @@ class CreditSerializer(serializers.ModelSerializer):
     class Meta:
         model = Credit
         fields = '__all__'
+
+class JournalEntrySerializerEdit(serializers.ModelSerializer):
+    #calling function to get
+    debits = serializers.SerializerMethodField('get_debit')
+    class Meta:
+        model = JournalEntry
+        exclude = ['id',]
+    def get_debit(self,obj):
+        debits = Debit.objects.filter(journalEntry_id=obj)
+        srlzr = DebitSerilizer(debits, many=True)
+        return srlzr.data
+        
