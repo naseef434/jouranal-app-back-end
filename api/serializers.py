@@ -28,7 +28,7 @@ class CreditSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class JournalEntrySerializerEdit(serializers.ModelSerializer):
-    #calling function to get
+    #calling function to tget_debit
     debits = serializers.SerializerMethodField('get_debit')
     class Meta:
         model = JournalEntry

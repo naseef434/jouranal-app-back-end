@@ -10,7 +10,6 @@ from rest_framework import generics
 
 
 # Create your views here.
-
 class JournalEntryView(viewsets.ModelViewSet):
     queryset = JournalEntry.objects.all()
     serializer_class = JournalEntrySerializer
@@ -46,21 +45,21 @@ class JournalEntryViewEdit(APIView):
         # print(jrnentry.entryNumber)
         # return Response("hello")
 
-class CreatejournalEntry(generics.CreateAPIView):
-    queryset = JournalEntry.objects.all()
-    serializer_class = JournalEntrySerializerEdit 
-    def create(self, request,  **kwargs):
-        try:
-            response = super().create(request, **kwargs)
-            return Response({'status':'success','response_code': 200,'data': response.data})
-        except Exception as e:
-            message = str(e)     
-            return Response({'status':'error','response_code':500,"message":message})    
+# class CreatejournalEntry(generics.CreateAPIView):
+#     queryset = JournalEntry.objects.all()
+#     serializer_class = JournalEntrySerializerEdit 
+#     def create(self, request,  **kwargs):
+#         try:
+#             response = super().create(request, **kwargs)
+#             return Response({'status':'success','response_code': 200,'data': response.data})
+#         except Exception as e:
+#             message = str(e)     
+#             return Response({'status':'error','response_code':500,"message":message})    
 
-class DebitView(viewsets.ModelViewSet):
-    queryset = Debit.objects.all()
-    serializer_class = DebitSerilizer
+# class DebitView(viewsets.ModelViewSet):
+#     queryset = Debit.objects.all()
+#     serializer_class = DebitSerilizer
 
-class CreditView(viewsets.ModelViewSet):
-    queryset = Credit.objects.all()
-    serializer_class = CreditSerializer
+# class CreditView(viewsets.ModelViewSet):
+#     queryset = Credit.objects.all()
+#     serializer_class = CreditSerializer
